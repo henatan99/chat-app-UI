@@ -5,7 +5,7 @@ import MessageCard from '../components/messageCard';
 const MessageSection = () => {
   const [message, setMessage] = useState('');
 
-  const handleChange = (e) => setMessage(e.taget.value);
+  const handleChange = (e) => setMessage(e.target.value);
   const handleSubmit = (e) => {
     e.preventDefault();
   };

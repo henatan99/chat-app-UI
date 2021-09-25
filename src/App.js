@@ -1,8 +1,11 @@
 import './App.css';
+import MessageSection from './containers/messageSection';
 
 function App() {
   return (
-    <div className="App" />
+    <div className="App">
+      <MessageSection />
+    </div>
   );
 }
 
