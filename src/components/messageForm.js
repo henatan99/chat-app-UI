@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const MessageForm = ({value, handleChange}) => (
     <form onSubmit={handleSubmit}>
-        <input value={value} onChange={handleChange} placeholder="Send a message" />
+        <input value={value} onChange={handleChange} placeholder="Send a message..." />
     </form>
 )
 
