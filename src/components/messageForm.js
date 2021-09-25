@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const MessageForm = ({ value, handleChange }) => (
+const MessageForm = ({ value, handleChange, handleSubmit }) => (
   <form onSubmit={handleSubmit}>
     <input value={value} onChange={handleChange} placeholder="Send a message..." />
   </form>

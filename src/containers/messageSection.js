@@ -12,7 +12,7 @@ const MessageSection = () => {
 
   return (
     <section>
-      <MessageCard avatar={avatar} name="Henok" message="My message" timeStamp="06:02" />
+      <MessageCard avatar="my avatar" name="Henok" message="My message" timeStamp="06:02" />
       <MessageForm value={message} handleChange={handleChange} handleSubmit={handleSubmit} />
     </section>
   );
