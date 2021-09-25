@@ -5,7 +5,7 @@ import SideNav from './sideNav';
 const MessagePage = () => {
     return (
         <div>
-            <SideNav />
+            <SideNav rooms={rooms} handleRoomClick={handleRoomClick} handleAddClick={handleAddClick} />
             <MessageSection />
         </div>
     )
