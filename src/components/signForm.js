@@ -1,13 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const SignForm = (username, password, handleUsernameChange, handlePasswordChange, handleClick) => {
+const SignForm = ({
+  username,
+  password,
+  handleUsernameChange,
+  handlePasswordChange,
+  handleClick,
+}) => (
   <form>
     <input value={username} onChange={handleUsernameChange} placeholder="Username or email" />
     <input type="password" value={password} onChange={handlePasswordChange} placeholder="Password" />
     <button type="button" onClick={handleClick}>Submit</button>
-  </form>;
-};
+  </form>
+);
 
 SignForm.defaultProps = {
   username: '',

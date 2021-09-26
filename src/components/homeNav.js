@@ -1,8 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-const HomeNav = ({ handleSignIn, handleSignUp }) => (
+const HomeNav = () => (
   <header>
     <nav>
       <div>
@@ -13,25 +12,15 @@ const HomeNav = ({ handleSignIn, handleSignUp }) => (
         <Link to="/">
           <span>Home</span>
         </Link>
-        <Link to="/sign" onClick={handleSignIn}>
+        <Link to="/signin">
           <span>SignIn</span>
         </Link>
-        <Link to="/sign" onClick={handleSignUp}>
+        <Link to="/signup">
           <span>SignUp</span>
         </Link>
       </div>
     </nav>
   </header>
 );
-
-HomeNav.defaultProps = {
-  handleSignIn: null,
-  handleSignUp: null,
-};
-
-HomeNav.propTypes = {
-  handleSignIn: PropTypes.func,
-  handleSignUp: PropTypes.func,
-};
 
 export default HomeNav;
