@@ -1,11 +1,19 @@
 import './App.css';
-import MessageSection from './containers/messageSection';
+import {
+  BrowserRouter as Router, Switch, Route,
+} from 'react-router-dom';
+
+import HomePage from './containers/homePage';
 
 function App() {
   return (
-    <div className="App">
-      <MessageSection />
-    </div>
+    <Router>
+      <Switch>
+        <div className="App">
+          <Route path="/" exact component={HomePage} />
+        </div>
+      </Switch>
+    </Router>
   );
 }
 
