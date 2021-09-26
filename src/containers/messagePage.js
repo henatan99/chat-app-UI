@@ -5,7 +5,10 @@ import SideNav from './sideNav';
 const MessagePage = () => {
   const [room, setRoom] = useState();
 
-  const handleRoomClick = (e) => setRoom(room);
+  const handleRoomClick = () => setRoom(room);
+  const handleAddClick = () => console.log('clicked');
+
+  const rooms = ['room-a', 'room-b', 'room-c'];
 
   return (
     <div>

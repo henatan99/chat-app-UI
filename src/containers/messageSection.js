@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+
 import MessageForm from '../components/messageForm';
 import MessageCard from '../components/messageCard';
 
@@ -17,6 +19,14 @@ const MessageSection = ({ room }) => {
       <MessageForm value={message} handleChange={handleChange} handleSubmit={handleSubmit} />
     </section>
   );
+};
+
+MessageSection.defaultProps = {
+  room: '',
+};
+
+MessageSection.propTypes = {
+  room: PropTypes.string,
 };
 
 export default MessageSection;

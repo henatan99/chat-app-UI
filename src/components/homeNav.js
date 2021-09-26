@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-const HomeNav = ({handleSignIn, handleSignUp}) => (
+const HomeNav = ({ handleSignIn, handleSignUp }) => (
   <header>
     <nav>
       <div>
@@ -25,13 +25,13 @@ const HomeNav = ({handleSignIn, handleSignUp}) => (
 );
 
 HomeNav.defaultProps = {
+  handleSignIn: null,
   handleSignUp: null,
-  handleSignUp: null
-}
+};
 
 HomeNav.propTypes = {
   handleSignIn: PropTypes.func,
-  handleSignUp: PropTypes.func
-}
+  handleSignUp: PropTypes.func,
+};
 
 export default HomeNav;

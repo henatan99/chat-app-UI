@@ -1,16 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Rooms = (rooms, handleRoomClick, handleToggle, handleAddClick, toggleSign, roomsClass) => (
+const Rooms = ({
+  rooms, handleRoomClick, handleToggle, handleAddClick, toggleSign, roomsClass,
+}) => (
   <div>
     <div>
-      <button onClick={handleToggle}>{toggleSign}</button>
+      <button type="button" onClick={handleToggle}>{toggleSign}</button>
       <span>My Rooms</span>
-      <button onClick={handleAddClick}>+</button>
+      <button type="button" onClick={handleAddClick}>+</button>
     </div>
     <ul className={roomsClass}>
       { rooms.map((room) => (
-        <li>
+        <li key={room.name}>
           {' '}
           <button type="button" onClick={handleRoomClick}>{room.name}</button>
           {' '}

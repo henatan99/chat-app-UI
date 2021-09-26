@@ -13,8 +13,14 @@ const SignPage = (sign) => {
 
   return (
     <div>
-      <h2>{sign === 'signUp' ? 'Sign Up' : 'Sign In'}</h2>
-      <SignForm username={username} password={password} handleUsernameChange={handleUsernameChange} handlePasswordChange={handlePasswordChange} handleClick={handleClick} />
+      <h2>{sign === 'signup' ? 'Sign Up' : 'Sign In'}</h2>
+      <SignForm
+        username={username}
+        password={password}
+        handleUsernameChange={handleUsernameChange}
+        handlePasswordChange={handlePasswordChange}
+        handleClick={handleClick}
+      />
     </div>
   );
 };
