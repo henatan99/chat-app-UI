@@ -1,21 +1,36 @@
-const baseApi = 'http://localhost:3001/'
+const baseApi = 'http://localhost:3001/';
 
-export const Sign = async (request, username, password) => {
-    const response = await 
-    fetch({
-        method: 'POST',
-        url: `${baseApi}api/v1/users/${request}`,
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
-        data: {
-          user: {
-              username,
-              password
-          }
-        },
-    });
-    const data = await response.json();
-    return data;
+export const signFetch = async (username, password, request) => {
+  const url = `${baseApi}api/v1/users/${request}`;
+  const settings = {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+    data: {
+      user: {
+        username,
+        password,
+      },
+    },
+  };
+  const response = await fetch(url, settings);
+  const data = await response.json();
+  console.log(data);
+  return data;
+};
+
+export const usersFetch = async (request) => {
+  const url = `${baseApi}api/v1/users/${request}`;
+  const settings = {
+    method: 'GET',
+    mode: 'no-cors',
+  };
+  const response = await fetch(url, settings);
+  console.log(response);
+  const data = await response.json();
+  console.log(data);
+  return data;
 };
