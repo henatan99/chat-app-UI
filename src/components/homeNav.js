@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { BsChatQuoteFill } from 'react-icons/bs';
 
 const HomeNav = () => (
   <header>
     <nav>
       <div>
-        <img src="" alt="logo" />
+        <BsChatQuoteFill />
         <span>ChatRoom</span>
       </div>
       <div>
