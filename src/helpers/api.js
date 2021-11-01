@@ -1,39 +1,13 @@
-const baseApi = 'http://localhost:3001/';
+import axios from 'axios';
+import baseApi from './baseApi';
+import authHeaders from './authHeaders';
 
-export const signFetch = async (username, password, request) => {
-  const url = `${baseApi}api/v1/users/${request}`;
-  const settings = {
-    method: 'POST',
-    mode: 'no-cors',
-    headers: {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-    },
-    data: {
-      user: {
-        username,
-        password,
-      },
-    },
-  };
-  const response = await fetch(url, settings);
-  const data = await response.json();
-  // eslint-disable-next-line
-  console.log(data);
-  return data;
+export const sendRequestWithData = async (method, path, data) => {
+  const result = await axios[method](`${baseApi}/${path}`, data, authHeaders());
+  return result;
 };
 
-export const usersFetch = async (request) => {
-  const url = `${baseApi}api/v1/users/${request}`;
-  const settings = {
-    method: 'GET',
-    mode: 'no-cors',
-  };
-  const response = await fetch(url, settings);
-  // eslint-disable-next-line
-  console.log(response);
-  const data = await response.json();
-  // eslint-disable-next-line
-  console.log(data);
-  return data;
+export const sendRequestWithoutData = async (method, path) => {
+  const result = await axios[method](`${baseApi}/${path}`, authHeaders());
+  return result;
 };

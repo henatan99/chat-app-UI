@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 
 import HomeNav from '../components/homeNav';
 import SignForm from '../components/signForm';
-import { usersFetch } from '../helpers/api';
+import { signedUp } from '../helpers/authUsers';
 
 const SignPage = () => {
   const [username, setUsername] = useState('');
@@ -25,7 +25,7 @@ const SignPage = () => {
     // eslint-disable-next-line
     console.log(password);
     try {
-      const data = await usersFetch(request);
+      const data = await signedUp(username, password);
       // eslint-disable-next-line
       console.log(data);
     } catch (error) {
