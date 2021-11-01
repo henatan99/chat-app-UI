@@ -6,6 +6,7 @@ const MessagePage = () => {
   const [room, setRoom] = useState();
 
   const handleRoomClick = () => setRoom(room);
+  // eslint-disable-next-line no-console
   const handleAddClick = () => console.log('clicked');
 
   const rooms = ['room-a', 'room-b', 'room-c'];

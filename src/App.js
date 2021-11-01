@@ -9,12 +9,12 @@ import SignPage from './containers/SignPage';
 function App() {
   return (
     <Router>
-      <Switch>
-        <div className="App">
+      <div className="App">
+        <Switch>
           <Route path="/" exact component={HomePage} />
           <Route path="/:sign" exact component={SignPage} />
-        </div>
-      </Switch>
+        </Switch>
+      </div>
     </Router>
   );
 }
