@@ -16,15 +16,21 @@ const SignPage = () => {
   const handleClick = async (e) => {
     e.preventDefault();
     const request = sign === 'signup' ? '' : 'signin';
+    // eslint-disable-next-line
     console.log(sign);
+    // eslint-disable-next-line
     console.log(request);
+    // eslint-disable-next-line
     console.log(username);
+    // eslint-disable-next-line
     console.log(password);
     try {
       const data = await usersFetch(request);
+      // eslint-disable-next-line
       console.log(data);
     } catch (error) {
       setError(JSON.stringify(error));
+      // eslint-disable-next-line
       console.log(error);
     }
   };

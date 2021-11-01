@@ -18,6 +18,7 @@ export const signFetch = async (username, password, request) => {
   };
   const response = await fetch(url, settings);
   const data = await response.json();
+  // eslint-disable-next-line
   console.log(data);
   return data;
 };
@@ -29,8 +30,10 @@ export const usersFetch = async (request) => {
     mode: 'no-cors',
   };
   const response = await fetch(url, settings);
+  // eslint-disable-next-line
   console.log(response);
   const data = await response.json();
+  // eslint-disable-next-line
   console.log(data);
   return data;
 };
