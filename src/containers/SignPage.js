@@ -8,34 +8,62 @@ import { signedUp, loggedIn } from '../helpers/authUsers';
 const SignPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [errors, setErrors] = useState([]);
+  const [msg, setMsg] = useState('');
 
-  const { slug } = useParams();
+  const { sign } = useParams();
   const handleUsernameChange = (e) => setUsername(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
+
+  const clearMsgSetErrors = (err) => {
+    setMsg('');
+    setErrors(err);
+  };
+
+  const handleResponse = (response) => {
+    if (response.success) {
+      setErrors([]);
+      setMsg('You are now logging in...');
+      localStorage.setItem('token', response.token);
+
+      // here: status should be changed to login, setCurrentUser
+      // send users to the proper page
+    }
+    if (response.errors.length > 0) {
+      clearMsgSetErrors(response.errors);
+    }
+  };
+
   const handleClick = async (e) => {
     e.preventDefault();
     try {
-      if (slug === 'signup') {
-        const data = await signedUp(username, password);
-        // eslint-disable-next-line
-        console.log(data);
+      let response;
+      if (sign === 'signup') {
+        response = await signedUp(username, password);
       } else {
-        const data = await loggedIn(username, password);
-        // eslint-disable-next-line
-        console.log(data);
+        response = await loggedIn(username, password);
       }
-    } catch (error) {
-      setError(JSON.stringify(error));
-      // eslint-disable-next-line
-      console.log(error);
+      handleResponse(response);
+    } catch (err) {
+      clearMsgSetErrors(err);
     }
   };
 
   return (
     <div>
       <HomeNav />
-      <h2>{slug === 'signup' ? 'Sign Up' : 'Sign In'}</h2>
+      <h2>{sign === 'signup' ? 'Sign Up' : 'Sign In'}</h2>
+      {(errors || msg) && (
+        <div className="messages">
+          {errors.length > 0
+            && errors.map((error) => (
+              <p key={error} className="message__error">
+                {error}
+              </p>
+            ))}
+          {msg && <p className="message__info">{msg}</p>}
+        </div>
+      )}
       <SignForm
         username={username}
         password={password}
@@ -43,7 +71,6 @@ const SignPage = () => {
         handlePasswordChange={handlePasswordChange}
         handleClick={handleClick}
       />
-      <div>{error && error.message}</div>
     </div>
   );
 };
