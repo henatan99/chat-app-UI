@@ -22,14 +22,14 @@ const SignPage = () => {
 
   const handleResponse = (response) => {
     if (response.success) {
+      console.log('jahskahska', response);
       setErrors([]);
       setMsg('You are now logging in...');
       localStorage.setItem('token', response.token);
 
       // here: status should be changed to login, setCurrentUser
       // send users to the proper page
-    }
-    if (response.errors.length > 0) {
+    } else if (response.errors.length > 0) {
       clearMsgSetErrors(response.errors);
     }
   };
@@ -53,17 +53,13 @@ const SignPage = () => {
     <div>
       <HomeNav />
       <h2>{sign === 'signup' ? 'Sign Up' : 'Sign In'}</h2>
-      {(errors || msg) && (
-        <div className="messages">
-          {errors.length > 0
-            && errors.map((error) => (
-              <p key={error} className="message__error">
-                {error}
-              </p>
-            ))}
-          {msg && <p className="message__info">{msg}</p>}
-        </div>
-      )}
+      {errors
+        && errors.map((error) => (
+          <p key={error} className="message-error">
+            {error}
+          </p>
+        ))}
+      {msg && <p className="message-info">{msg}</p>}
       <SignForm
         username={username}
         password={password}
