@@ -3,31 +3,28 @@ import { useParams } from 'react-router-dom';
 
 import HomeNav from '../components/homeNav';
 import SignForm from '../components/signForm';
-import { signedUp } from '../helpers/authUsers';
+import { signedUp, loggedIn } from '../helpers/authUsers';
 
 const SignPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
-  const { sign } = useParams();
+  const { slug } = useParams();
   const handleUsernameChange = (e) => setUsername(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
   const handleClick = async (e) => {
     e.preventDefault();
-    const request = sign === 'signup' ? '' : 'signin';
-    // eslint-disable-next-line
-    console.log(sign);
-    // eslint-disable-next-line
-    console.log(request);
-    // eslint-disable-next-line
-    console.log(username);
-    // eslint-disable-next-line
-    console.log(password);
     try {
-      const data = await signedUp(username, password);
-      // eslint-disable-next-line
-      console.log(data);
+      if (slug === 'signup') {
+        const data = await signedUp(username, password);
+        // eslint-disable-next-line
+        console.log(data);
+      } else {
+        const data = await loggedIn(username, password);
+        // eslint-disable-next-line
+        console.log(data);
+      }
     } catch (error) {
       setError(JSON.stringify(error));
       // eslint-disable-next-line
@@ -38,7 +35,7 @@ const SignPage = () => {
   return (
     <div>
       <HomeNav />
-      <h2>{sign === 'signup' ? 'Sign Up' : 'Sign In'}</h2>
+      <h2>{slug === 'signup' ? 'Sign Up' : 'Sign In'}</h2>
       <SignForm
         username={username}
         password={password}
