@@ -22,12 +22,13 @@ const SignPage = () => {
 
   const handleResponse = (response) => {
     if (response.success) {
-      console.log('jahskahska', response);
       setErrors([]);
-      setMsg('You are now logging in...');
+      // eslint-disable-next-line no-console
+      console.log(response);
+      setMsg(`Hi ${response.user.username}, you are now logging in...`);
       localStorage.setItem('token', response.token);
 
-      // here: status should be changed to login, setCurrentUser
+      // here: status should be changed to login, setCurrentUserDataToStore
       // send users to the proper page
     } else if (response.errors.length > 0) {
       clearMsgSetErrors(response.errors);
